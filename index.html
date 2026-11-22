@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://api.aladhan.com; media-src 'self' https://archive.org https://*.archive.org; frame-src https://www.youtube.com https://www.youtube-nocookie.com; img-src 'self' data:; style-src 'self'; script-src 'self';">
+<title>Sadaqah Path 2.1</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="youtube-background"><iframe id="youtubeFrame" class="background-youtube" title="Nature background" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" tabindex="-1"></iframe></div><div class="background-overlay"></div>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><img class="brand-logo" src="assets/icon.png" alt="Sadaqah Path"><div><b>صدقة</b><small>Sadaqah Path</small></div></div>
+  <nav>
+    <button class="nav-btn active" data-page="homePage">⌂ <span data-i18n="nav.home">الرئيسية</span></button>
+    <button class="nav-btn" data-page="quranPage">☰ <span data-i18n="nav.quran">القرآن</span></button>
+    <button class="nav-btn" data-action="settings">⚙ <span data-i18n="nav.settings">الإعدادات</span></button>
+    <button class="nav-btn" data-page="aboutPage">ⓘ <span data-i18n="nav.about">حول التطبيق</span></button>
+  </nav>
+  <div class="side-note" data-i18n="side.free">مجاني • مفتوح المصدر</div>
+</aside>
+<main class="content">
+<section id="homePage" class="page active">
+  <header class="topbar"><div class="topbar-actions"><button id="settingsButton" class="icon-button" title="الإعدادات" data-i18n-title="home.settingsTitle">⚙</button><button id="reloadVideoButton" class="icon-button" title="إعادة تحميل الخلفية" data-i18n-title="home.reloadTitle">↻</button></div><div><div id="gregorianDate" class="small-text">...</div><div id="locationLabel" class="small-text">Freiburg, Germany</div></div></header>
+  <section class="hero"><div id="clock" class="clock">--:--:--</div><div class="next-prayer-card"><div class="label" data-i18n="home.nextPrayer">الصلاة القادمة</div><div id="nextPrayerName" class="next-prayer">...</div><div id="nextPrayerTime" class="next-time">--:--</div><div id="countdown" class="countdown">--:--:--</div></div></section>
+  <section id="prayerList" class="prayer-list"></section><div id="statusMessage" class="status-message"></div><button id="startButton" class="start-button" data-i18n="home.enableAdhan">تشغيل البرنامج وتفعيل صوت الأذان</button><div class="home-footnote" data-i18n="home.fullscreen">F11 للشاشة الكاملة • Esc للخروج منها</div>
+</section>
+<section id="quranPage" class="page">
+  <div class="section-head quran-head">
+    <div><h1 data-i18n="quran.title">القرآن الكريم</h1><p data-i18n="quran.subtitle">قراءة وبحث بدون إنترنت بعد تضمين بيانات القرآن أثناء البناء.</p></div>
+    <div class="quran-actions"><button id="continueReadingBtn" class="secondary compact" data-i18n="quran.continue">متابعة القراءة</button><span id="quranOfflineBadge" class="pill" data-i18n="quran.offline">Offline</span></div>
+  </div>
+  <div id="quranDataStatus" class="quran-data-status"></div>
+  <div class="quran-grid quran-working-grid">
+    <div class="panel quran-sidebar-panel">
+      <div class="quran-search-row"><input id="quranSearchInput" class="field" placeholder="ابحث باسم السورة أو كلمة من القرآن..." data-i18n-placeholder="quran.searchPlaceholder"><button id="quranSearchBtn" class="secondary compact" data-i18n="quran.search">بحث</button></div>
+      <div id="quranSearchInfo" class="quran-search-info muted"></div>
+      <div id="surahList" class="surah-list"></div>
+    </div>
+    <div class="panel quran-reader-panel">
+      <div id="quranWelcome" class="quran-welcome">
+        <img src="assets/icon.png" alt="Sadaqah Path" class="quran-welcome-logo">
+        <h2 data-i18n="quran.welcomeTitle">القرآن الكريم</h2>
+        <p data-i18n="quran.welcomeText">اختر سورة من القائمة للقراءة. آخر موضع قراءة يُحفظ محليًا على جهازك.</p>
+      </div>
+      <div id="quranReader" class="quran-reader hidden">
+        <div class="quran-reader-head">
+          <button id="prevSurahBtn" class="icon-button small-icon">‹</button>
+          <div><h2 id="readerSurahName">سورة</h2><div id="readerSurahMeta" class="muted"></div></div>
+          <button id="nextSurahBtn" class="icon-button small-icon">›</button>
+        </div>
+        <div id="ayahList" class="ayah-list"></div>
+      </div>
+      <div id="quranSearchResults" class="quran-search-results hidden"></div>
+    </div>
+  </div>
+  <div class="quran-attribution" data-i18n-html="quran.attribution">نص القرآن الكريم: <a href="https://tanzil.net" target="_blank" rel="noreferrer">Tanzil Project</a> • CC BY 3.0 • Version 1.1 • النص معروض دون تعديل.</div>
+</section>
+<section id="aboutPage" class="page"><div class="section-head"><div><h1 data-i18n="about.title">حول صدقة</h1><p data-i18n="about.subtitle">Sadaqah Path 2.1.0 — إصدار Desktop متعدد اللغات.</p></div></div><div class="about-grid"><div class="panel"><img src="assets/icon.png" class="about-logo" alt="Sadaqah Path"><h2>صدقة — Sadaqah Path</h2><p data-i18n="about.intro">مواقيت الصلاة، الأذان والقرآن الكريم. مجاني بالكامل، بدون إعلانات أو اشتراكات أو مشتريات داخل التطبيق.</p></div><div class="panel"><h3 data-i18n="about.development">التطوير</h3><p><b>Ebrahim Tayfour</b><br>ET TECH</p><p class="muted" data-i18n="about.updates">لمتابعة التحديثات القادمة والمشاريع الأخرى.</p></div><div class="panel"><h3 data-i18n="about.opensource">مفتوح المصدر</h3><p class="muted" data-i18n="about.opensourceText">كود التطبيق تحت MIT License. نص القرآن: Tanzil Project — CC BY 3.0.</p></div><div class="panel"><h3 data-i18n="about.privacy">الخصوصية</h3><p data-i18n="about.privacyText">لا تتبع إعلاني، لا بيع للبيانات، ولا حساب مستخدم. نسخة الكمبيوتر لا تطلب الوصول إلى موقع الجهاز.</p></div></div></section>
+</main></div>
+<dialog id="settingsDialog" class="settings-dialog"><form method="dialog" id="settingsForm"><h2 data-i18n="settings.title">الإعدادات</h2>
+<label><span data-i18n="settings.city">المدينة</span><input id="cityInput" type="text" value="Freiburg" required></label>
+<label><span data-i18n="settings.country">الدولة</span><input id="countryInput" type="text" value="Germany" required></label>
+<label><span data-i18n="settings.method">طريقة حساب الصلاة</span><select id="methodInput"><option value="3" data-i18n="method.mwl">رابطة العالم الإسلامي</option><option value="13" data-i18n="method.diyanet">Diyanet</option><option value="2" data-i18n="method.isna">ISNA</option><option value="4" data-i18n="method.umm">أم القرى - مكة</option><option value="5" data-i18n="method.karachi">Karachi</option></select></label>
+<label><span data-i18n="settings.offset">رفع أو تأخير الأذان بالدقائق</span><input id="offsetInput" type="number" value="0" min="-30" max="30"></label>
+<label><span data-i18n="settings.quranSize">حجم خط القرآن</span><select id="quranFontSizeInput"><option value="25" data-i18n="settings.small">صغير</option><option value="29" data-i18n="settings.medium">متوسط</option><option value="34" data-i18n="settings.large">كبير</option><option value="38" data-i18n="settings.xlarge">كبير جدًا</option></select></label>
+<label><span data-i18n="settings.language">لغة التطبيق</span><select id="languageInput"><option value="ar">العربية</option><option value="de">Deutsch</option><option value="en">English</option></select></label>
+<label><span data-i18n="settings.youtube">رابط فيديو YouTube للخلفية</span><input id="youtubeInput" type="url" value="https://www.youtube.com/watch?v=ZJkiOQ0eb4I" required></label>
+<div class="settings-tools"><button type="button" id="testAdhanButton" class="secondary-button" data-i18n="settings.testAdhan">🔊 اختبار الأذان</button><button type="button" id="resetSettingsButton" class="secondary-button" data-i18n="settings.reset">إعادة الافتراضي</button></div>
+<div id="settingsMessage" class="settings-message"></div>
+<div class="dialog-actions"><button value="cancel" class="secondary-button" data-i18n="settings.cancel">إلغاء</button><button id="saveSettingsButton" value="default" class="primary-button" data-i18n="settings.save">حفظ</button></div></form></dialog>
+<script src="i18n.js"></script><audio id="adhanAudio" preload="auto" src="https://archive.org/download/adhan.notifications/Ahmed_al_Imadi_Adhan.mp3"></audio><script src="data/surah-metadata.js"></script><script src="app.js"></script>
+</body></html>
