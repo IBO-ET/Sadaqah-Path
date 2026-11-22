@@ -1,0 +1,86 @@
+name: Build and publish Windows release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract Sadaqah Path source
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path .\buildsrc | Out-Null
+          Expand-Archive -Path .\source\Sadaqah-Path-2.1.2-source.zip -DestinationPath .\buildsrc -Force
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install NSIS
+        shell: powershell
+        run: choco install nsis -y --no-progress
+
+      - name: Prepare official Quran data
+        shell: powershell
+        working-directory: buildsrc
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File .\Prepare-Quran-Data.ps1
+
+      - name: Install build dependencies
+        shell: powershell
+        working-directory: buildsrc
+        run: npm install
+
+      - name: Build Windows 64-bit component
+        shell: powershell
+        working-directory: buildsrc
+        run: npm run setup:x64
+
+      - name: Build Windows 32-bit component
+        shell: powershell
+        working-directory: buildsrc
+        run: npm run setup:ia32
+
+      - name: Build multilingual combined setup
+        shell: powershell
+        working-directory: buildsrc
+        run: |
+          $makensis = "${env:ProgramFiles(x86)}\NSIS\makensis.exe"
+          if (!(Test-Path $makensis)) {
+            $makensis = "${env:ProgramFiles}\NSIS\makensis.exe"
+          }
+          if (!(Test-Path $makensis)) {
+            throw "makensis.exe was not found after installing NSIS."
+          }
+          & $makensis ".\installer\Sadaqah-Path-Setup.nsi"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Verify final installer
+        shell: powershell
+        run: |
+          $file = ".\buildsrc\dist\Sadaqah-Path-2.1.2-Setup.exe"
+          if (!(Test-Path $file)) { throw "Final installer was not created." }
+          $item = Get-Item $file
+          Write-Host "Final installer: $($item.Name)"
+          Write-Host "Size: $([math]::Round($item.Length / 1MB, 2)) MB"
+
+      - name: Publish GitHub Release v2.1.2
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2.1.2
+          name: Sadaqah Path 2.1.2 — Windows Stable
+          body_path: RELEASE_NOTES.md
+          draft: false
+          prerelease: false
+          make_latest: true
+          files: buildsrc/dist/Sadaqah-Path-2.1.2-Setup.exe
