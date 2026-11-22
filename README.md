@@ -1,130 +1,104 @@
 # Sadaqah Path
 
-**Sadaqah Path** is a free and open-source Windows desktop application for prayer times and Quran reading.
+**Sadaqah Path** is a free Windows desktop application for prayer times and Quran reading.
 
 It is designed to be simple, calm, and free from ads, subscriptions, and user accounts.
+
+## Download
+
+Download the latest Windows installer from the **Releases** section:
+
+`Sadaqah-Path-2.1.2-Setup.exe`
+
+The installer supports:
+
+- English
+- Deutsch
+- العربية
+- Windows 64-bit
+- Windows 32-bit
 
 ## Features
 
 - Daily prayer times for Fajr, Dhuhr, Asr, Maghrib, and Isha
-- Next-prayer display and countdown
+- Next prayer display and countdown
 - Automatic Adhan at prayer time
-- Nature video background through YouTube
-- Full Quran text available offline after build preparation
+- Nature video background
+- Full Quran reading
 - 114 Surahs
 - Quran search
-- Save the last reading position
+- Saved reading position
 - Adjustable Quran font size
 - Arabic, German, and English interface
 - Windows 64-bit and 32-bit support
-- No ads, no subscriptions, no account required
+- No ads
+- No subscriptions
+- No user account required
 
-> The Windows edition does not include Qibla and does not request precise location access. Qibla is planned for the mobile edition.
-
-## Download
-
-For normal users, download the latest Windows installer from the **Releases** section:
-
-`Sadaqah-Path-2.1.2-Setup.exe`
-
-The installer lets the user choose:
-
-- English, Deutsch, or العربية
-- Windows 64-bit or 32-bit
-
-## Build from source
-
-Requirements:
-
-- Windows 10/11
-- Node.js
-- NSIS for the combined multilingual installer
-- Internet access during the initial build
-
-Run:
-
-```bat
-Build-Professional-Setup.cmd
-```
-
-The final installer is created in:
-
-```text
-dist\Sadaqah-Path-2.1.2-Setup.exe
-```
-
-## Quran text
-
-Quran text is sourced from the **Tanzil Project**, Uthmani Quran Text Version 1.1.
-
-- Source: https://tanzil.net
-- License: Creative Commons Attribution 3.0
-- The project verifies 6236 ayahs during preparation.
-- The Tanzil source text is distributed without modification.
-
-See `data/TANZIL_ATTRIBUTION.txt` and `THIRD_PARTY_NOTICES.md`.
-
-## Prayer times
-
-Prayer-time data is requested at runtime from AlAdhan.
-
-The app stores today's retrieved prayer times locally as a same-day fallback.
-
-## Background video and Adhan
-
-The nature background is played using YouTube's embedded player. Video rights remain with the respective owner.
-
-The current Adhan audio is streamed from its external source and is not distributed under the MIT license of this repository.
+The Windows version does not include Qibla. Qibla is planned for the mobile version.
 
 ## Privacy
 
-Sadaqah Path:
+Sadaqah Path does not require a user account and does not contain advertising or advertising trackers.
 
-- has no user account
-- contains no advertising
-- contains no advertising trackers
-- does not sell user data
-- does not request GPS on Windows
-- stores app preferences and reading position locally
+The Windows version does not request GPS or precise device location.
 
-The selected city and country are sent to the prayer-times service to retrieve daily prayer times. YouTube receives normal web requests when the video background is enabled.
+App settings and the last Quran reading position are stored locally on the user's computer.
 
-See `PRIVACY.md`.
+The selected city and country are used to retrieve daily prayer times.
 
-## Languages
+The nature background and Adhan may require an internet connection.
 
-- العربية
-- Deutsch
-- English
+## Quran text
 
-## License
+Quran text used by Sadaqah Path is sourced from the Tanzil Project.
 
-Application source code: **MIT License**.
+Source: https://tanzil.net
 
-Third-party data and media remain under their own licenses and terms.
+Tanzil Quran Text Version 1.1 is distributed under Creative Commons Attribution 3.0 and is used without modification.
 
-See `LICENSE` and `THIRD_PARTY_NOTICES.md`.
+## Source code
+
+Sadaqah Path is intended to be an open source project. The public source code will be published separately after the Windows release package is finalized.
 
 ## Developer
 
-**Ebrahim Tayfour — ET TECH**
-
----
+**Ebrahim Tayfour | ET TECH**
 
 ## العربية
 
-**Sadaqah Path** تطبيق Windows مجاني ومفتوح المصدر لمواقيت الصلاة وقراءة القرآن الكريم.
+**Sadaqah Path** تطبيق Windows مجاني لمواقيت الصلاة وقراءة القرآن الكريم.
 
-التطبيق بدون إعلانات أو اشتراكات أو حساب مستخدم، ويدعم العربية والألمانية والإنجليزية، بالإضافة إلى Windows 64-bit و32-bit.
+التطبيق لا يحتوي على إعلانات أو اشتراكات ولا يحتاج إلى حساب مستخدم.
 
-للمستخدم العادي: نزّل ملف `Sadaqah-Path-2.1.2-Setup.exe` من قسم **Releases**.
+يدعم:
 
----
+- العربية
+- الألمانية
+- الإنجليزية
+- Windows 64-bit
+- Windows 32-bit
+
+لتحميل البرنامج استخدم ملف:
+
+`Sadaqah-Path-2.1.2-Setup.exe`
+
+من قسم **Releases**.
 
 ## Deutsch
 
-**Sadaqah Path** ist eine kostenlose Open-Source-Windows-App für Gebetszeiten und das Lesen des Korans.
+**Sadaqah Path** ist eine kostenlose Windows-App für Gebetszeiten und das Lesen des Korans.
 
-Die App enthält keine Werbung, keine Abonnements und kein Benutzerkonto. Sie unterstützt Deutsch, Arabisch und Englisch sowie Windows 64-Bit und 32-Bit.
+Die App enthält keine Werbung, keine Abonnements und benötigt kein Benutzerkonto.
 
-Für normale Nutzer: Lade `Sadaqah-Path-2.1.2-Setup.exe` im Bereich **Releases** herunter.
+Unterstützt werden:
+
+- Deutsch
+- Arabisch
+- Englisch
+- Windows 64-Bit
+- Windows 32-Bit
+
+Lade im Bereich **Releases** diese Datei herunter:
+
+`Sadaqah-Path-2.1.2-Setup.exe`
